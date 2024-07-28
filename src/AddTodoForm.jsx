@@ -24,7 +24,6 @@ function AddTodoForm({ onAddTodo }) {
 
   return (
     <div>
-      <h1> AddTodoForm</h1>
       <form onSubmit={handleAddTodo}>
         <label>
           Title
