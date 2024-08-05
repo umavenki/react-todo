@@ -1,7 +1,9 @@
-function TodoListItem({ title }) {
+function TodoListItem({ title, onRemoveTodo, id }) {
   return (
     <div>
-      <li>{title} </li>
+      <li>
+        {title} <button onClick={() => onRemoveTodo(id)}>Remove</button>
+      </li>
     </div>
   );
 }
