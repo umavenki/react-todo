@@ -1,0 +1,12 @@
+.ListItem {
+  color: #503418;
+  font-size: 1.5rem;
+  list-style: none;
+  padding-bottom: 1rem;
+}
+title {
+  font-size: medium;
+}
+button:hover {
+  background-color: rgb(243, 243, 222);
+}
