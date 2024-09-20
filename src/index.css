@@ -36,7 +36,7 @@ h1 {
   display: flex;
   justify-content: center;
   font-size: 4.2em;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 button {
@@ -53,7 +53,16 @@ button {
   border-color: #a87820;
 }
 button:hover {
-  color: #daef82;
+  color: #313d02;
+  background-color: #f4b37b;
+}
+
+.image-button {
+  width: 2rem;
+  height: 2rem;
+  padding-top: 0.5em;
+  background-image: url("https://www.freepnglogos.com/uploads/plus-icon/plus-icon-download-png-and-vector-17.png");
+  background-size: cover;
 }
 button:focus,
 button:focus-visible {

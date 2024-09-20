@@ -29,7 +29,7 @@ function AddTodoForm({ onAddTodo }) {
         >
           Title
         </InputWithLabel>
-        <button>Add</button>
+        <button class="image-button"></button>
       </form>
     </div>
   );
