@@ -10,3 +10,18 @@ title {
 button:hover {
   background-color: rgb(243, 243, 222);
 }
+.delete-button {
+  width: 5rem;
+  height: 5rem;
+  padding-top: 0.5em;
+  background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/icons/3213295/trash-icon-sm.png");
+  background-size: cover;
+}
+@media only screen and (max-width: 600px) {
+  .ListItem {
+    color: #1e1c4a;
+    font-size: 1.5rem;
+    list-style: none;
+    padding-bottom: 1rem;
+  }
+}

@@ -64,6 +64,13 @@ button:hover {
   background-image: url("https://www.freepnglogos.com/uploads/plus-icon/plus-icon-download-png-and-vector-17.png");
   background-size: cover;
 }
+.delete-button {
+  width: 2rem;
+  height: 2.5rem;
+  padding-bottom: 0.5em;
+  background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/icons/3213295/trash-icon-sm.png");
+  background-size: cover;
+}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -75,7 +82,23 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
+  }
+}
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  button {
+    background-color: rgb(75, 198, 238);
+    border-color: rgb(19, 126, 161);
+  }
+  button:hover {
+    background-color: rgb(198, 228, 238);
+  }
+  h1 {
+    color: rgb(10, 10, 91);
   }
 }

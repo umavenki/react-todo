@@ -4,7 +4,11 @@ function TodoListItem({ title, onRemoveTodo, id }) {
   return (
     <div>
       <li className={style.ListItem}>
-        {title} <button onClick={() => onRemoveTodo(id)}>Remove</button>
+        {title}{" "}
+        <button
+          className="delete-button"
+          onClick={() => onRemoveTodo(id)}
+        ></button>
       </li>
     </div>
   );
