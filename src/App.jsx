@@ -11,7 +11,7 @@ function App() {
       import.meta.env.VITE_AIRTABLE_BASE_ID
     }/${
       import.meta.env.VITE_TABLE_NAME
-    }?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`; //?sort%5B0%5D%5Bfield%5D=title&sort%5B0%5D%5Bdirection%5D=asc;
+    }?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`;
     const options = {
       method: "GET",
       headers: {
