@@ -9,7 +9,9 @@ function App() {
   const fetchData = async () => {
     const url = `https://api.airtable.com/v0/${
       import.meta.env.VITE_AIRTABLE_BASE_ID
-    }/${import.meta.env.VITE_TABLE_NAME}`;
+    }/${
+      import.meta.env.VITE_TABLE_NAME
+    }?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`; //?sort%5B0%5D%5Bfield%5D=title&sort%5B0%5D%5Bdirection%5D=asc;
     const options = {
       method: "GET",
       headers: {
@@ -30,7 +32,16 @@ function App() {
         };
         return newTodo;
       });
-      setTodoList(todos);
+      const sortedTodos = todos.sort((objectA, objectB) => {
+        if (objectA.title < objectB.title) {
+          return -1;
+        } else if (objectA.title > objectB.title) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      setTodoList(sortedTodos);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
