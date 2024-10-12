@@ -9,7 +9,7 @@ function InputWithLabel({ todoTitle, handleTitleChange, children }) {
   });
   return (
     <>
-      <label>{children}</label>
+      <label htmlFor="todoTitle">{children}</label>
       <input
         id="todoTitle"
         name="title"

@@ -16,7 +16,6 @@ function AddTodoForm({ onAddTodo }) {
       title: todoTitle,
     };
 
-    console.log(todoTitle);
     onAddTodo(newTodo);
     setTodoTitle("");
   }
@@ -30,7 +29,7 @@ function AddTodoForm({ onAddTodo }) {
         >
           Title
         </InputWithLabel>
-        <button className="image-button"></button>
+        <button className="image-button" type="submit"></button>
       </form>
     </div>
   );
