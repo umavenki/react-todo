@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Splash from "./components/Splash";
+import styles from "./App.module.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
+  const [sortAsc, setSortAsc] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const fetchData = async () => {
     const url = `https://api.airtable.com/v0/${
@@ -24,7 +27,7 @@ function App() {
         throw new Error(` Error: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
+
       const todos = data.records.map((todo) => {
         const newTodo = {
           id: todo.id,
@@ -32,15 +35,8 @@ function App() {
         };
         return newTodo;
       });
-      const sortedTodos = todos.sort((objectA, objectB) => {
-        if (objectA.title < objectB.title) {
-          return -1;
-        } else if (objectA.title > objectB.title) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
+      const sortedTodos = sortTodos(todos, sortAsc);
+
       setTodoList(sortedTodos);
       setIsLoading(false);
     } catch (error) {
@@ -117,38 +113,78 @@ function App() {
     const response = await postData(newTodo);
     const post = response.records[0];
     const todo = { id: post.id, title: post.fields.title };
-    console.log(todo);
-    setTodoList((prevTodoList) => [...prevTodoList, todo]);
+    const newTodoList = [...todoList, todo];
+
+    const sortedTodos = sortTodos(newTodoList, sortAsc);
+
+    setTodoList(sortedTodos);
   }
   async function removeTodo(id) {
     const record = await deleteData(id);
-    console.log(record);
+
     const filteredTodo = todoList.filter((todo) => todo.id !== record.id);
     setTodoList(filteredTodo);
   }
-
+  function sortTodosAscending(objectA, objectB) {
+    if (objectA < objectB) {
+      return -1;
+    } else if (objectA > objectB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  function sortTodosDescending(objectA, objectB) {
+    if (objectA < objectB) {
+      return 1;
+    } else if (objectA > objectB) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+  function sortTodos(todos, sortAsc) {
+    return todos.sort((objectA, objectB) => {
+      if (sortAsc) {
+        return sortTodosAscending(objectA.title, objectB.title);
+      } else {
+        return sortTodosDescending(objectA.title, objectB.title);
+      }
+    });
+  }
+  function handleSortToggle() {
+    setSortAsc(!sortAsc);
+    setTodoList((prevTodoList) => sortTodos(prevTodoList, !sortAsc));
+  }
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/Home"
           element={
-            <div>
-              <h1>TodoList</h1>
-              {isLoading ? (
-                <p>"Loading..." </p>
-              ) : (
-                <TodoList
-                  todoList={todoList}
-                  onRemoveTodo={removeTodo}
-                ></TodoList>
-              )}
-
-              <AddTodoForm onAddTodo={addTodo}></AddTodoForm>
-            </div>
+            <main className={styles.app}>
+              <section className={styles.section}>
+                <h1>TodoList</h1>
+                <AddTodoForm onAddTodo={addTodo}></AddTodoForm>
+                <button
+                  className={styles.toggleButton}
+                  onClick={handleSortToggle}
+                >
+                  Toggle (Asc/Des)
+                </button>
+                {isLoading ? (
+                  <p>"Loading..." </p>
+                ) : (
+                  <TodoList
+                    todoList={todoList}
+                    onRemoveTodo={removeTodo}
+                  ></TodoList>
+                )}
+              </section>
+            </main>
           }
         ></Route>
-        <Route path="/new" element={<h1>New Todo List</h1>}></Route>
+        <Route path="/" element={<Splash />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,9 +1,20 @@
-label {
-  font-size: 1.5rem;
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.label {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
 }
 
-input {
-  margin: 1em;
+.input {
+  justify-self: end;
+  min-width: 8rem;
+  min-height: 1.8rem;
+  padding: 0.6rem;
+  border-radius: 0.8rem;
 }
 @media only screen and (max-width: 600px) {
 }

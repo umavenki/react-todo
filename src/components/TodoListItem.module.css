@@ -1,27 +1,53 @@
 .ListItem {
-  color: #503418;
+  background-color: rgb(195, 199, 239);
+  border-radius: 0.5rem;
+  color: #1e1c4a;
   font-size: 1.5rem;
+  font-family: fantasy;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
   list-style: none;
-  padding-bottom: 1rem;
+  min-width: 18rem;
+  max-width: 26rem;
+  width: 80vw;
 }
-title {
-  font-size: medium;
+
+.removeButton:hover {
+  background-color: rgb(252, 116, 116);
 }
-button:hover {
-  background-color: rgb(243, 243, 222);
-}
-.delete-button {
-  width: 5rem;
-  height: 5rem;
+.removeButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
   padding-top: 0.5em;
   background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/icons/3213295/trash-icon-sm.png");
   background-size: cover;
+  background-color: rgb(159, 158, 231);
+  border-color: rgb(106, 105, 172);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border-radius: 8px;
+  border: 1px solid;
 }
 @media only screen and (max-width: 600px) {
   .ListItem {
+    background-color: rgb(143, 167, 214);
     color: #1e1c4a;
     font-size: 1.5rem;
     list-style: none;
     padding-bottom: 1rem;
+  }
+  .removeButton {
+    background-color: rgb(185, 208, 253);
+    border-color: rgb(101, 124, 172);
+  }
+  .removeButton:hover {
+    background-color: rgb(252, 116, 116);
   }
 }

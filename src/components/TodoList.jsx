@@ -7,12 +7,7 @@ function TodoList({ todoList, onRemoveTodo }) {
       <ul>
         {todoList.map((t) => {
           return (
-            <TodoListItem
-              key={t.id}
-              title={t.title}
-              onRemoveTodo={onRemoveTodo}
-              id={t.id}
-            />
+            <TodoListItem key={t.id} todo={t} onRemoveTodo={onRemoveTodo} />
           );
         })}
       </ul>
