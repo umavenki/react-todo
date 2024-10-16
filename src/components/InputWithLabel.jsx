@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import style from "./InputWithLabel.module.css";
+import styles from "./InputWithLabel.module.css";
 import PropTypes from "prop-types";
 
 function InputWithLabel({ todoTitle, handleTitleChange, children }) {
@@ -8,16 +8,19 @@ function InputWithLabel({ todoTitle, handleTitleChange, children }) {
     inputRef.current.focus();
   });
   return (
-    <>
-      <label htmlFor="todoTitle">{children}</label>
+    <div className={styles.flexbox}>
+      <label className={styles.label} htmlFor="todoTitle">
+        {children}
+      </label>
       <input
+        className={styles.input}
         id="todoTitle"
         name="title"
         value={todoTitle}
         onChange={handleTitleChange}
         ref={inputRef}
       />
-    </>
+    </div>
   );
 }
 InputWithLabel.propTypes = {

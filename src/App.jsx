@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Splash from "./components/Splash";
+import styles from "./App.module.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -158,24 +160,31 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/Home"
           element={
-            <div>
-              <h1>TodoList</h1>
-              <AddTodoForm onAddTodo={addTodo}></AddTodoForm>
-              <button onClick={handleSortToggle}>Toggle (Asc/Des)</button>
-              {isLoading ? (
-                <p>"Loading..." </p>
-              ) : (
-                <TodoList
-                  todoList={todoList}
-                  onRemoveTodo={removeTodo}
-                ></TodoList>
-              )}
-            </div>
+            <main className={styles.app}>
+              <section className={styles.section}>
+                <h1>TodoList</h1>
+                <AddTodoForm onAddTodo={addTodo}></AddTodoForm>
+                <button
+                  className={styles.toggleButton}
+                  onClick={handleSortToggle}
+                >
+                  Toggle (Asc/Des)
+                </button>
+                {isLoading ? (
+                  <p>"Loading..." </p>
+                ) : (
+                  <TodoList
+                    todoList={todoList}
+                    onRemoveTodo={removeTodo}
+                  ></TodoList>
+                )}
+              </section>
+            </main>
           }
         ></Route>
-        <Route path="/new" element={<h1>New Todo List</h1>}></Route>
+        <Route path="/" element={<Splash />}></Route>
       </Routes>
     </BrowserRouter>
   );
